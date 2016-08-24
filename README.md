@@ -3,26 +3,32 @@ A Javascript library to turn your anchor links into cool-looking links. All anch
 
 Ongoing work.
 
+## Features
+
+* URL changing
+* Page title changing
+* History pushing
+* Pre/post actions
+* Animations support
+* Cross-browser
+
 ## Requirements
 
 TODO
 
 ## Dependencies
 
-TODO
-jquery?
-
 ## Installation
 
-Include the javascript file at the end of your code after your jquery load (?).
+Include the javascript file at the end of your code.
 
-```sh
+```javascript
 <script src="anchor-beautifier.js"></script>
 ```
 
 or
 
-```sh
+```javascript
 <script src="anchor-beautifier.min.js"></script>
 ```
 
@@ -33,7 +39,7 @@ Add class="cool-anchor" to your anchor links.
 
 Start Anchor-beautifier with default options using the following piece of code:
 
-```sh
+```javascript
 <script type="text/javascript">
 AnchorBeautifier.init();
 </script>
@@ -41,7 +47,7 @@ AnchorBeautifier.init();
 
 If you want to customize it just add the following piece of code after the script tag:
 
-```sh
+```javascript
 <script type="text/javascript">
 AnchorBeautifier.init({
     attribute: "href",
