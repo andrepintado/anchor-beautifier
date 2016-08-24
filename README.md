@@ -7,12 +7,14 @@ Ongoing work.
 
 ## Dependencies
 
+jquery?
+
 ## Installation
 
-Include the javascript file at the end of your code after your jquery load.
+Include the javascript file at the end of your code after your jquery load (?).
 
 ```sh
-<script src="anchor-beautifier.js"></script>>
+<script src="anchor-beautifier.js"></script>
 ```
 
 or
@@ -24,15 +26,23 @@ or
 
 ## Usage
 
-Add class="cool-anchor" to your anchor links. All anchor links will make the url change to http://yoururl/foo-bar instead of http://yoururl/#foo-bar. The title will be changed to "Main url title - Foo Bar".  http://yoururl/foo-bar will then be accessible as if user would be acessing http://yoururl/#foo-bar.
+Add class="cool-anchor" to your anchor links. All anchor links will make the url change to http://yoururl.com/foo-bar instead of http://yoururl.com/#foo-bar. The title will be changed to "<Main url title> - Foo Bar".  http://yoururl.com/foo-bar will then be accessible as if user would be acessing http://yoururl.com/#foo-bar.
 
-Anchor-beautifier is implicitly starting with default options. If you want to customize it just add the following piece of code after the script tag:
+Start Anchor-beautifier with default options using the following piece of code:
 
 ```sh
-<script>
-AnchorBeautifier.initConfig({
+<script type="text/javascript">
+AnchorBeautifier.init();
+</script>
+```
+
+If you want to customize it just add the following piece of code after the script tag:
+
+```sh
+<script type="text/javascript">
+AnchorBeautifier.init({
     attribute: "href",
-    valuePrefix: "#"
+    anchorPrefix: "#"
 })
 </script>
 ```

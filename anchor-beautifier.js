@@ -1,54 +1,62 @@
 //Anchor Beautifier v0.0.1
 
-var AnchorBeautifier = {
+(function() {
 
-    config: {
-        attribute: 'href',
-        anchorPrefix: '#'
-    },
+    AnchorBeautifier = {
 
-    startVars: {
-        basePath: window.location.pathname
-    },
+        started: false,
 
-    initConfig: function (initVars) {
-        this.config.attribute = initVars.attribute;
-        this.config.anchorPrefix = initVars.anchorPrefix;
+        //default config
+        config: {
+            attribute: 'href',
+            anchorPrefix: '#'
+        },
 
-        this.start();
-    },
+        //start vars
+        startVars: {
+            basePath: window.location.pathname,
+            baseTitle: document.title
+        },
 
-    start: function () {
+        init: function (initVars = null) {
+            if (null !== initVars) {
+                console.log("inside !null");
+                this.config.attribute = initVars.attribute;
+                this.config.anchorPrefix = initVars.anchorPrefix;
+            }
+            this.start();
+        },
 
-        var self = this;
+        start: function () {
 
-        links = document.getElementsByClassName("cool-anchor");
+            var self = this;
 
-        [].forEach.call(document.getElementsByClassName("cool-anchor"), function(item,i,arr) {
-            item.addEventListener("click", function(eventObject) {
-                var clickedItem = eventObject.target;
-                pageName = clickedItem.
-                            getAttribute(self.config.attribute).
-                            replace(self.config.anchorPrefix,"");
-                pageTitle = document.title+" - "+pageName;
+            links = document.getElementsByClassName("cool-anchor");
 
-                //change title
-                //TODO: title format with some string tweaks
-                document.title = pageTitle;
+            [].forEach.call(document.getElementsByClassName("cool-anchor"), function(item,i,arr) {
+                item.addEventListener("click", function(eventObject) {
+                    var clickedItem = eventObject.target;
+                    pageName = clickedItem.
+                                getAttribute(self.config.attribute).
+                                replace(self.config.anchorPrefix,"");
+                    pageTitle = self.startVars.baseTitle+" - "+pageName;
 
-                //change url
-                //TODO: if href ends in / that's cool, otherwise we have to add it.
-                //se href termina em / cool, senão adiciona
-                setTimeout(function() {
-                    window.history.pushState(pageName, pageTitle, self.startVars.basePath+pageName) },
-                0);
+                    //change title
+                    //TODO: title format with some string tweaks
+                    document.title = pageTitle;
 
-            }, false);
-        });
+                    //change url
+                    //TODO: if href ends in / that's cool, otherwise we have to add it.
+                    //se href termina em / cool, senão adiciona
+                    setTimeout(function() {
+                        window.history.pushState(pageName, pageTitle, self.startVars.basePath+pageName) },
+                    0);
+
+                }, false);
+            });
+
+        }
 
     }
 
-}
-
-
-//window.history.pushState(page, document.title, '/'+page);
+})();
