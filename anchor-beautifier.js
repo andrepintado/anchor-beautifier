@@ -1,5 +1,3 @@
-//Anchor Beautifier vxxx
-
 //aux functions
 String.prototype.toProperCase = function () {
     return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -22,13 +20,15 @@ String.prototype.replaceAll = function(search, replacement) {
 
         //start vars
         startVars: {
-            basePath: window.location.pathname,
+            basePath: (window.location.href.substring(window.location.href.length-1, window.location.href.length) == "/") ?
+                        window.location.pathname :
+                        window.location.pathname+"/",
             baseTitle: document.title
         },
 
         //init function
-        init: function (initVars = null) {
-            if (null !== initVars) {
+        init: function (initVars) {
+            if (undefined !== initVars) {
                 this.config.attribute = initVars.attribute;
                 this.config.anchorPrefix = initVars.anchorPrefix;
             }
@@ -36,7 +36,6 @@ String.prototype.replaceAll = function(search, replacement) {
         },
 
         start: function () {
-
             var self = this;
 
             links = document.getElementsByClassName("cool-anchor");
@@ -64,9 +63,7 @@ String.prototype.replaceAll = function(search, replacement) {
                     //set document title
                     document.title = pageTitle;
 
-                    //set window url
-                    //TODO: if href ends in / that's cool, otherwise we have to add it.
-                    //se href termina em / cool, senão adiciona
+                    //set window url and history
                     window.history.pushState(pageName, pageTitle, self.startVars.basePath+pageName)
 
                     //go to destination item
