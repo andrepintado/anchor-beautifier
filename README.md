@@ -12,21 +12,21 @@ Ongoing work.
 Include the javascript file at the end of your code after your jquery load.
 
 ```sh
-<script src="anchor-beautifier.js"></script>></script>
+<script src="anchor-beautifier.js"></script>>
 ```
 
 or
 
 ```sh
-<script src="anchor-beautifier.min.js"></script>></script>
+<script src="anchor-beautifier.min.js"></script>
 ```
 
 
 ## Usage
 
-Add class="cool-anchor" to your anchor links.
+Add class="cool-anchor" to your anchor links. All anchor links will make the url change to http://yoururl/foo-bar instead of http://yoururl/#foo-bar. The title will be changed to "Main url title - Foo Bar".  http://yoururl/foo-bar will then be accessible as if user would be acessing http://yoururl/#foo-bar.
 
-Anchor-beautifier is implicitly starting with default options. If you want to customize the lib just add the following piece of code after the script tag:
+Anchor-beautifier is implicitly starting with default options. If you want to customize it just add the following piece of code after the script tag:
 
 ```sh
 <script>
