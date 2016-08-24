@@ -1,5 +1,5 @@
 # Anchor Beautifier
-A Javascript library to turn your anchor links into cool-looking links. All anchor links will make the url change to http://yoururl.com/foo-bar instead of http://yoururl.com/#foo-bar. The title will be changed to "MainUrlTitle - Foo Bar".  http://yoururl.com/foo-bar will then be accessible as if user would be acessing http://yoururl.com/#foo-bar.
+A Javascript library to turn your anchor links into cool-looking links. All anchor links will make the url change to http://yoururl.com/foo-bar instead of http://yoururl.com/#foo-bar. The page title will be changed to "MainUrlTitle - Foo Bar".  http://yoururl.com/foo-bar will then be accessible as if user would be accessing http://yoururl.com/#foo-bar.
 
 Ongoing work.
 
@@ -32,10 +32,13 @@ or
 <script src="anchor-beautifier.min.js"></script>
 ```
 
-
 ## Usage
 
-Add class="cool-anchor" to your anchor links.
+Add class="cool-anchor" to your anchor links. Example:
+
+```html
+<a href="#foo-bar">Foo bar link</a>
+```
 
 Start Anchor-beautifier with default options using the following piece of code:
 
@@ -57,3 +60,6 @@ AnchorBeautifier.init({
 ```
 
 ### init options
+
+* attribute
+* anchorPrefix

@@ -41,14 +41,21 @@ String.prototype.replaceAll = function(search, replacement) {
 
             links = document.getElementsByClassName("cool-anchor");
 
-            //adding click listeners for each cool-anchor element
+            //iterating over cool-anchor elements
             [].forEach.call(document.getElementsByClassName("cool-anchor"), function(item,i,arr) {
+
+                //replace href by data-link and set href to javascript:;
+                item.setAttribute("data-link",item.getAttribute(self.config.attribute));
+                item.setAttribute(self.config.attribute,"javascript:;");
+
+                //adding click listener
                 item.addEventListener("click", function(eventObject) {
+
                     var clickedItem = eventObject.target;
 
                     //tweaking page name
                     pageName = clickedItem.
-                                getAttribute(self.config.attribute).
+                                getAttribute("data-link").
                                 replace(self.config.anchorPrefix,"");
 
                     //tweaking title
@@ -60,10 +67,10 @@ String.prototype.replaceAll = function(search, replacement) {
                     //set window url
                     //TODO: if href ends in / that's cool, otherwise we have to add it.
                     //se href termina em / cool, senão adiciona
-                    setTimeout(function() {
-                        window.history.pushState(pageName, pageTitle, self.startVars.basePath+pageName)
-                        },
-                    0);
+                    window.history.pushState(pageName, pageTitle, self.startVars.basePath+pageName)
+
+                    //go to destination item
+                    document.getElementById(pageName).scrollIntoView();
 
                 }, false);
             });
