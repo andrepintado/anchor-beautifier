@@ -6,6 +6,9 @@ String.prototype.replaceAll = function(search, replacement) {
     var target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
 };
+function urlHasHash(url) { return (url.indexOf("#") > 0); }
+function urlHasDot(url) { return (url.indexOf(".") > 0); }
+function urlEndsWithBar(url) { return (url.charAt(url.length-1) == "/"); }
 
 //main stuff
 (function() {
@@ -20,22 +23,37 @@ String.prototype.replaceAll = function(search, replacement) {
 
         //start vars
         startVars: {
-            basePath: (window.location.href.substring(window.location.href.length-1, window.location.href.length) == "/") ?
-                        window.location.pathname :
-                        window.location.pathname+"/",
-            baseTitle: document.title
+            basePath: window.location.pathname,
+            baseTitle: document.title,
+            baseHash: window.location.hash
         },
 
         //init function
         init: function (initVars) {
             if (undefined !== initVars) {
-                this.config.attribute = initVars.attribute;
-                this.config.anchorPrefix = initVars.anchorPrefix;
+                //iterate over vars
+                for (var prop in initVars) {
+                    this.config[prop] = initVars[prop];
+                }
             }
+            this.preStart();
+        },
+
+        //pre-treatment of some vars
+        preStart: function() {
+
+            if (!urlHasHash(window.location.href) &&
+                !urlHasDot(window.location.pathname) &&
+                !urlEndsWithBar(window.location.pathname)) this.startVars.basePath = this.startVars.basePath+"/";
+            else if (urlHasDot(window.location.pathname)) this.startVars.basePath = this.startVars.basePath+"/";
+            else this.startVars.basePath = this.startVars.basePath;
+
             this.start();
         },
 
+        //main method
         start: function () {
+
             var self = this;
 
             links = document.getElementsByClassName("cool-anchor");
@@ -71,6 +89,11 @@ String.prototype.replaceAll = function(search, replacement) {
 
                 }, false);
             });
+
+            //checking if page has been called with an anchor. If so, click it.
+            if (self.startVars.baseHash !== "") {
+                document.querySelector(".cool-anchor[data-link='"+self.startVars.baseHash+"']").click();
+            }
 
         }
 
