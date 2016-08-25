@@ -1,5 +1,5 @@
 # Anchor Beautifier
-A Javascript library to turn your anchor links into cool-looking links. All anchor links will make the url change to http://yoururl.com/foo-bar instead of http://yoururl.com/#foo-bar. The page title will be changed to "MainUrlTitle - Foo Bar".  http://yoururl.com/foo-bar will then be accessible as if user would be accessing http://yoururl.com/#foo-bar.
+A Javascript library to turn your anchor links into cool-looking links. All anchor links will make the url change to http://yoururl.com/foo-bar instead of http://yoururl.com/#foo-bar. The page title will be changed to "MainUrlTitle - Foo Bar".  When http://yoururl.com/#foo-bar will be called directly,  http://yoururl.com/foo-bar will be shown to the user.
 
 Ongoing work.
 
@@ -11,12 +11,6 @@ Ongoing work.
 * Pre/post actions
 * Animations support
 * Cross-browser
-
-## Requirements
-
-TODO
-
-## Dependencies
 
 ## Installation
 
