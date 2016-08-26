@@ -57,3 +57,11 @@ AnchorBeautifier.init({
 
 * attribute
 * anchorPrefix
+
+## Server Configuration
+
+If you visitors to be able to visit your http://yoururl.com/foo-bar directly, you should configure your server. Just let it know the requests to /foo-bar should be transformed into /#foo-bar. Here's some help:
+
+### nginx
+
+### apache
