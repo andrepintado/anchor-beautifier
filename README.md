@@ -31,7 +31,7 @@ or
 Add class="cool-anchor" to your anchor links. Example:
 
 ```html
-<a href="#foo-bar">Foo bar link</a>
+<a href="#foo-bar" class="cool-anchor">Foo bar link</a>
 ```
 
 Start Anchor-beautifier with default options using the following piece of code:
@@ -60,8 +60,12 @@ AnchorBeautifier.init({
 
 ## Server Configuration
 
-If you visitors to be able to visit your http://yoururl.com/foo-bar directly, you should configure your server. Just let it know the requests to /foo-bar should be transformed into /#foo-bar. Here's some help:
+If you want visitors to be able to visit your http://yoururl.com/foo-bar directly, you should configure your server. Just let it know the requests to /foo-bar should be transformed into /#foo-bar. Here's some help:
 
 ### nginx
 
+TODO
+
 ### apache
+
+TODO
